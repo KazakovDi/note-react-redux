@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">s
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="main.css">
+    <script defer type="module" src="app.js"></script>
+    
+</head>
+<body>
+    <div class="tables">
+        <div id="main-table">
+            <div class="categories">
+                <p>Name</p>
+                <p>Created</p>
+                <p>Category</p>
+                <p>Content</p>
+                <p>Dates</p>
+                <div class="main-controls-block">
+                    <button class="archiveAll">🗂</button>
+                    <button class="deleteAll">🗑</button>
+                </div>
+            </div>
+        </div>
+        <div id="controls">
+            <button id="showNoteForm">Add note</button>
+            <button id="toggleTable">Show archive</button>
+        </div>
+        <div style="margin-top: 50px;" id="count-table">
+            <div class="categories">
+                <p>Category</p>
+                <p>Active</p>
+                <p>Archive</p>
+            </div>
+        </div>
+        <div id="archive-table">
+            <div class="categories">
+                <p>Name</p>
+                <p>Created</p>
+                <p>Category</p>
+                <p>Content</p>
+                <p>Dates</p>
+                <div class="main-controls-block">
+                    <button class="archiveAll">🗂</button>
+                    <button class="deleteAll">🗑</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="formContainer">
+        <form class="form" id="createNoteForm">
+            <input required placeholder="Note name" autocomplete="off" name="name" type="text">
+            <textarea required placeholder="Content" name="content" cols="30" rows="10"></textarea>
+            <select name="category">
+                <option label="Task" value="Task">
+                <option label="Random Thought" value="Random Thought">
+                <option label="Idea" value="Idea">
+                <option label="Quote" value="Quote">
+            </select>
+            <input id="createNote" value="Add" type="submit">
+            <button class="closeForm">Close</button>
+        </form>
+        <form class="form" id="editForm">
+            <input  placeholder="Note name"autocomplete="off" name="name" type="text">
+            <textarea placeholder="Content" name="content" cols="30" rows="10"></textarea>
+            <select name="category">
+                <option label="Task" value="Task">
+                <option label="Random Thought" value="Random Thought">
+                <option label="Idea" value="Idea">
+                <option label="Quote" value="Quote">
+            </select>
+            <input id="editNote" value="Edit" type="submit">
+            <button class="closeForm">Close</button>
+        </form>
+    </div>
+    <style>
+        body {
+    padding: 0;
+    margin: 0;
+    background-color: aquamarine;
+    position: relative;
+    font-size: 18px;
+}
+.tables {
+    width: 90%;
+    margin: 0 auto;
+}
+#main-table {
+    height: 50%;
+}
+#archive-table {
+    margin-top: 20px;
+    display: none;
+}
+#archive-table.active {
+    display: block;
+}
+#controls {
+    margin-top: 25px;
+}
+.table-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+}
+.categories>* {
+    text-align: center;
+    width: 200px;
+    
+}
+.table-item>* {
+    overflow-x: hidden;
+    text-align: center;
+    width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.categories {
+    background-color: #c3c3c3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.table-item>:last-child {
+    overflow-x: visible;
+}
+.table-item>:last-child button, .main-controls-block button {
+    font-size: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.controls button{
+    margin: 0 2px;
+}
+#formContainer {
+    display: none;
+    width:100vw;
+    justify-content: space-between;
+    position: fixed;
+    bottom:0
+}
+#formContainer.active {
+    display: flex;
+    pointer-events: none;
+}
+.form{
+    visibility: hidden;
+    pointer-events: none;
+}
+.form.active{
+    pointer-events: all;
+    visibility: visible;
+}
+#formContainer form{
+    display: flex;
+    flex-direction: column;
+    
+}
+#formContainer form > * {
+    font-size: 1.25rem;
+}
+#formContainer textarea{
+    resize: none;
+}
+
+
+    </style>
+</body>
+</html>
